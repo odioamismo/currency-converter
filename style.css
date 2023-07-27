@@ -65,3 +65,110 @@ body {
     text-transform: uppercase;
     line-height: 1.4;
 }
+
+.converter-inputs {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 2fr;
+    column-gap: 3rem;
+    align-items: center;
+}
+
+.converter-inputs > div {
+    margin-bottom: 2rem;
+}
+
+.converter-inputs label {
+    color: #5d7079;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.converter-inputs input, .converter-inputs select {
+    border: 1px solid #c6c7c9;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.8rem;
+    outline: 0;
+    width: 100%;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0!important;
+}
+
+.icon img {
+    width: 40px;
+}
+
+.icon button {
+    background-color: transparent;
+    border: none;
+    outline: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.icon button:hover {
+    transform: scale(1.1);
+   
+}
+
+.result-wrapper {
+    font-size: 1.5rem;
+}
+
+#from-result {
+    color: #0a146e;
+    font-weight: bold;
+}
+
+#to-result {
+    color: #2ed06e;
+    font-weight: bold;
+}
+
+#convert-btn {
+    background-color: #0a146e;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.4rem;
+    margin-top: 1.6rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    .converter-wrapper {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        min-width: 400px;
+    }
+
+    .converter-wrapper h2 {
+        font-size: 2rem;
+        top: -100px;
+    }
+
+    .converter-inputs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .result-wrapper {
+        font-size: 1.2rem;
+    }
+
+    #convert-btn {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .converter-wrapper {
+        min-width: 325px;
+    }
+}
