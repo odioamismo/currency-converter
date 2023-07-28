@@ -53,4 +53,17 @@ const getConvertedData = async (from, to, amt) => {
     const API_URL = `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amt}`
     const result = await fetch(API_URL);
     const data = await result.json();
+    displayConvertedData(from, to, amt, data.result);
 }
+
+const displayConvertedData = (fromCurrency, toCurrency, fromAmt, toAmt) => {
+    fromResult.innerHTML = `${fromAmt.toFixed(2)} ${fromCurrency} =`;
+    toResult.innerHTML = `${toAmt.toFixed(2)} ${toCurrency}`
+}
+
+swapButton.addEventListener("click", () => {
+    let fromIndex = fromCurrency.selectedIndex;
+    let toIndex = toCurrency.selectedIndex;
+    fromCurrency.querySelectorAll("option") [toIndex].selected = "selected";
+    toCurrency.querySelectorAll("option") [fromIndex].selected = "selected";
+})
