@@ -11,6 +11,40 @@ const loadCountrySymbols = async () => {
     const result = await fetch(API_URL);
     const data = await result.json()
     let listOfSymbols = data.symbols;
+    showData(listOfSymbols);
+};
+
+document.addEventListener(`DOMContentLoaded`, () => {
+    loadCountrySymbols(); 
+});
+
+const showData = (symbol) => {
+    const symbols = Object.keys(symbol);
+    let currency = "";
+    symbols.forEach(shrt => {
+        currency += `<option data-id = "${shrt}"> ${shrt} </option>`
+    });
+
+    fromCurrency.innerHTML = currency;
+    fromCurrency.querySelectorAll("option").forEach(option => {
+        if(option.dataset.id == "EUR") option.selected = "selected"
+    })
+
+    toCurrency.innerHTML = currency;
+    toCurrency.querySelectorAll("option").forEach(option => {
+        if(option.dataset.id == "PLN") option.selected = "selected"
+    })
 }
 
-loadCountrySymbols(); 
+fromAmount.addEventListener("keyup", function(){
+    let amount = Number(this.value);
+    if(!amount) fromAmount.style.borderColor = "#de3f44";
+    else fromAmount.style.borderColor = "#c6c7c9";
+});
+
+convertButton.addEventListener("click", () => {
+    let fromCurrencyOption = fromCurrency.value;
+    let toCurrencyOption = toCurrency.value;
+    let fromAmt = Number(fromAmount.value);
+    if(fromAmt) getConvertedData(fromCurrencyOption, toCurrencyOption, fromAmt);
+})
