@@ -48,3 +48,9 @@ convertButton.addEventListener("click", () => {
     let fromAmt = Number(fromAmount.value);
     if(fromAmt) getConvertedData(fromCurrencyOption, toCurrencyOption, fromAmt);
 })
+
+const getConvertedData = async (from, to, amt) => {
+    const API_URL = `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amt}`
+    const result = await fetch(API_URL);
+    const data = await result.json();
+}
